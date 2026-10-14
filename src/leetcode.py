@@ -91,7 +91,7 @@ def rank_teams(votes):
                 counts[team] = [0] * len(vote)
             counts[team][i] += 1
 
-def key(team):
+    def key(team):
         # negated counts sort descending; the letter breaks ties
         return tuple(-n for n in counts[team]) + (team,)
     result = ''
