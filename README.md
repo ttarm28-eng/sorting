@@ -23,7 +23,7 @@ but it even makes sequential search significantly faster due to an optimization 
 Technical interviews rarely ask you to *implement* sorting algorithms.
 Instead, they ask you to *use* sorting algorithms in a clever way.
 In the real world, we always use the built in python sorting function
-because it is highly optimized and very fast.
+because it is optimized and very fast.
 
 <img src=img/drake.jpg width=300px />
 
