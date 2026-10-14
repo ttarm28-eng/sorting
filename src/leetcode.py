@@ -1,4 +1,5 @@
 #!/bin/python3
+import functools
 '''
 This file contains leetcode problems
 that you might get asked in a technical interview.
@@ -44,6 +45,16 @@ def merge_intervals(intervals):
         return interval[0]
 
 
+    merged = []
+    for interval in sorted(intervals, key=key):
+        if merged and interval[0] <= merged[-1][1]:
+            if interval[1] > merged[-1][1]:
+                merged[-1][1] = interval[1]
+        else:
+            merged.append([interval[0], interval[1]])
+    return merged
+
+
 def rank_teams(votes):
     '''
     LeetCode 1366 -- Rank Teams by Votes
@@ -75,10 +86,23 @@ def rank_teams(votes):
     # counts[team][i] is the number of voters who ranked `team`
     # in position i -- fill this in before sorting.
     counts = {}
+    for vote in votes:
+        for i in range(len(vote)):
+            team = vote[i]
+            if team not in counts:
+                counts[team] = [0] * len(vote)
+            counts[team][i] += 1
+
 
     def key(team):
         # negated counts sort descending; the letter breaks ties
         return tuple(-n for n in counts[team]) + (team,)
+
+
+    result = ''
+    for team in sorted(counts, key=key):
+        result += team
+    return result
 
 
 def largest_number(nums):
@@ -108,6 +132,14 @@ def largest_number(nums):
             return -1
         return 1 if b + a > a + b else 0
 
+    strs = [str(n) for n in nums]
+    result = ''
+    for s in sorted(strs, key=functools.cmp_to_key(cmp)):
+        result += s
+    if result and result[0] == '0':
+        return '0'
+    return result
+
 
 def two_city_sched_cost(costs):
     '''
@@ -136,3 +168,13 @@ def two_city_sched_cost(costs):
     '''
     def key(cost):
         return cost[0] - cost[1]
+
+
+    n = len(costs) // 2
+    total = 0
+    for cost in costs:
+        total += cost[1]
+    ordered = sorted(costs, key=key)
+    for i in range(n):
+        total += key(ordered[i])
+    return total

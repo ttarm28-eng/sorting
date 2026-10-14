@@ -1,6 +1,6 @@
 # Sorting
-[![](https://github.com/mikeizbicki/sorting/workflows/tests-sorting/badge.svg)](https://github.com/mikeizbicki/sorting/actions?query=workflow%3Atests-sorting)
-[![](https://github.com/mikeizbicki/sorting/workflows/tests-leetcode/badge.svg)](https://github.com/mikeizbicki/sorting/actions?query=workflow%3Atests-leetcode)
+[![](https://github.com/ttarm28-eng/sorting/workflows/tests-sorting/badge.svg)](https://github.com/ttarm28-eng/sorting/actions?query=workflow%3Atests-sorting)
+[![](https://github.com/ttarm28-eng/sorting/workflows/tests-leetcode/badge.svg)](https://github.com/ttarm28-eng/sorting/actions?query=workflow%3Atests-leetcode)
 
 <img src=img/why.jpg width=300px />
 
