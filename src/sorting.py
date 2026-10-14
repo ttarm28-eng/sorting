@@ -17,6 +17,7 @@ equivalently, the result of every call to cmp is negated.
 import math
 import random
 
+
 def cmp_standard(a, b):
     '''
     used for sorting from lowest to highest
@@ -46,7 +47,7 @@ def cmp_reverse(a, b):
     >>> cmp_reverse(322, 322)
     0
     '''
-    return -cmp_standard(a,b)
+    return -cmp_standard(a, b)
 
 
 def cmp_invert(cmp):
@@ -155,7 +156,7 @@ def cmp_nan_first(a, b):
         return - 1
     if math.isnan(b):
         return 1
-    return cmp_standard(a,b)
+    return cmp_standard(a, b)
 
 
 def _natural_chunks(s):
@@ -339,7 +340,7 @@ def quick_sorted(xs, cmp=cmp_standard, reverse=False):
     equal = []
     greater = []
     for x in xs:
-        result = cmp(x,p)
+        result = cmp(x, p)
         if result < 0:
             less.append(x)
         elif result > 0:
@@ -380,30 +381,29 @@ def quick_sort(xs, cmp=cmp_standard, reverse=False):
     >>> xs
     ['file2', 'file10']
     '''
-def quick_sort(xs, cmp=cmp_standard, reverse=False):
     if reverse:
         cmp = cmp_invert(cmp)
     _quicksort(xs, 0, len(xs) - 1, cmp)
 
 
-def _quicksort(A, lo, hi, cmp):
+def _quicksort(a, lo, hi, cmp):
     if lo >= hi or lo < 0:
         return
-    p = _partition(A, lo, hi, cmp)
-    _quicksort(A, lo, p - 1, cmp)
-    _quicksort(A, p + 1, hi, cmp)
+    p = _partition(a, lo, hi, cmp)
+    _quicksort(a, lo, p - 1, cmp)
+    _quicksort(a, p + 1, hi, cmp)
 
 
-def _partition(A, lo, hi, cmp):
-    pivot = A[hi]
+def _partition(a, lo, hi, cmp):
+    pivot = a[hi]
     i = lo
     for j in range(lo, hi):
-        if cmp(A[j], pivot) <= 0:
-            temp = A[i]
-            A[i] = A[j]
-            A[j] = temp
+        if cmp(a[j], pivot) <= 0:
+            temp = a[i]
+            a[i] = a[j]
+            a[j] = temp
             i += 1
-    temp = A[i]
-    A[i] = A[hi]
-    A[hi] = temp
+    temp = a[i]
+    a[i] = a[hi]
+    a[hi] = temp
     return i

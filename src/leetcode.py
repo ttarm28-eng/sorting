@@ -43,8 +43,6 @@ def merge_intervals(intervals):
     '''
     def key(interval):
         return interval[0]
-
-
     merged = []
     for interval in sorted(intervals, key=key):
         if merged and interval[0] <= merged[-1][1]:
@@ -92,13 +90,9 @@ def rank_teams(votes):
             if team not in counts:
                 counts[team] = [0] * len(vote)
             counts[team][i] += 1
-
-
     def key(team):
         # negated counts sort descending; the letter breaks ties
         return tuple(-n for n in counts[team]) + (team,)
-
-
     result = ''
     for team in sorted(counts, key=key):
         result += team
@@ -168,8 +162,6 @@ def two_city_sched_cost(costs):
     '''
     def key(cost):
         return cost[0] - cost[1]
-
-
     n = len(costs) // 2
     total = 0
     for cost in costs:
